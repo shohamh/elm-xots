@@ -48,12 +48,14 @@ generateRowInTable n element =
         row =
             []
     in
-        case List.length row of
-            n ->
-                row
+        tr []
+            [ case List.length row of
+                n ->
+                    row
 
-            _ ->
-                element :: row
+                _ ->
+                    td [] [ element ] :: row
+            ]
 
 
 generateTable : Int -> Int -> Html Msg -> Html Msg
