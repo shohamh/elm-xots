@@ -42,7 +42,7 @@ update msg model =
 -- VIEW
 
 
-ListOfHtmlElements : Int -> Html Msg -> Html Msg
+generateRowInTable : Int -> Html Msg -> Html Msg
 generateRowInTable n element =
     let
         row =
@@ -62,12 +62,14 @@ generateTable col row element =
         table =
             []
     in
-        case List.length table of
-            col ->
-                table
+        table []
+            [ case List.length table of
+                col ->
+                    table
 
-            _ ->
-                (generateRowInTable row element) :: table
+                _ ->
+                    (generateRowInTable row element) :: table
+            ]
 
 
 view : Model -> Html Msg
