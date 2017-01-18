@@ -61,16 +61,16 @@ generateRowInTable n element =
 generateTable : Int -> Int -> Html Msg -> Html Msg
 generateTable col row element =
     let
-        table =
+        listOfRows =
             []
     in
         table []
-            [ case List.length table of
+            [ case List.length listOfRows of
                 col ->
-                    table
+                    listOfRows
 
                 _ ->
-                    (generateRowInTable row element) :: table
+                    (generateRowInTable row element) :: listOfRows
             ]
 
 
